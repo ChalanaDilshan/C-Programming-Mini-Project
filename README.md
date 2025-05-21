@@ -16,8 +16,7 @@ This ATM simulator provides a simple yet effective demonstration of everyday ban
 - Deposit funds
 - Withdraw funds
 - Exit/Logout
-- File storage for user data and transaction history
-
+- File storage for user data 
 ---
 
 ## 🧠 Concepts Used
