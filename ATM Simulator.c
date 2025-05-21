@@ -11,7 +11,6 @@
 #define PIN_LENGTH 4
 #define INITIAL_USERS 5
 
-// ANSI color codes
 #define GREEN "\033[0;32m"
 #define RESET "\033[0m"
 
@@ -79,4 +78,40 @@ int main() {
     saveUserData();
     printf("\nThank you for using the ATM. Goodbye!\n");
     return 0;
+}
+void initializeSystem() {
+    userCount = 0;
+    currentUser = NULL;
+
+    FILE *file = fopen(USER_DATA_FILE, "rb");
+    if (file == NULL) {
+        createInitialUsers();
+        saveUserData();
+    } else {
+        fclose(file);
+    }
+}
+
+void createInitialUsers() {
+    User initialUsers[INITIAL_USERS] = {
+        {"1234567890123456", "Ravindu Chamikara", "1234", 15721.00f},
+        {"2345678901234567", "Chalana Dilshan", "2345", 1287.50f},
+        {"3456789012345678", "Anusha Avishki", "3456", 1126.75f},
+        {"4567890123456789", "Sanka Dulanjana", "5678", 45000.21f},
+        {"4567890123456781", "Usam Hafrath", "4321", 41000.21f}
+    };
+
+    for (int i = 0; i < INITIAL_USERS; i++) {
+        users[userCount++] = initialUsers[i];
+    }
+}
+
+void loadUserData() {
+    FILE *file = fopen(USER_DATA_FILE, "rb");
+    if (file != NULL) {
+        fread(&userCount, sizeof(int), 1, file);
+        if (userCount > MAX_USERS) userCount = MAX_USERS;
+        fread(users, sizeof(User), userCount, file);
+        fclose(file);
+    }
 }
