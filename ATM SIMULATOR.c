@@ -36,7 +36,7 @@ void handleBalanceInquiry();
 void handleDeposit();
 void handleWithdrawal();
 void displayAccountInfo(const User *user);
-void clearInputBuffer();
+void clearKeyboardBuffer();
 bool validateAccountNumber(const char *accountNumber);
 bool validatePIN(const char *pin);
 void printHeader(const char *title);
@@ -55,11 +55,11 @@ int main() {
         printf("Enter your choice: ");
 
         if (scanf("%d", &choice) != 1) {
-            clearInputBuffer();
+            clearKeyboardBuffer();
             printf("\nInvalid input. Please enter a number (1-2).\n");
             continue;
         }
-        clearInputBuffer();
+        clearKeyboardBuffer();
 
         switch (choice) {
             case 1:
@@ -210,11 +210,11 @@ void displayMainMenu() {
         printf("Enter your choice: ");
 
         if (scanf("%d", &choice) != 1) {
-            clearInputBuffer();
+            clearKeyboardBuffer();
             printf("\nInvalid input. Please enter a number (1-5).\n");
             continue;
         }
-        clearInputBuffer();
+        clearKeyboardBuffer();
 
         switch (choice) {
             case 1:
@@ -251,11 +251,11 @@ void handleDeposit() {
     printf("Enter amount to deposit: LKR ");
 
     if (scanf("%f", &amount) != 1 || amount <= 0) {
-        clearInputBuffer();
+        clearKeyboardBuffer();
         printf("\nInvalid amount. Please enter a positive number.\n");
         return;
     }
-    clearInputBuffer();
+    clearKeyboardBuffer();
 
     currentUser->balance += amount;
     printf("\nDeposit successful. New balance: LKR %.2f\n", currentUser->balance);
@@ -269,11 +269,11 @@ void handleWithdrawal() {
     printf("Enter amount to withdraw: LKR ");
 
     if (scanf("%f", &amount) != 1 || amount <= 0) {
-        clearInputBuffer();
+        clearKeyboardBuffer();
         printf("\nInvalid amount. Please enter a positive number.\n");
         return;
     }
-    clearInputBuffer();
+    clearKeyboardBuffer();
 
     if (amount > currentUser->balance) {
         printf("\nInsufficient funds. Current balance: LKR %.2f\n", currentUser->balance);
@@ -293,7 +293,7 @@ void displayAccountInfo(const User *user) {
     printf("--------------------------------------------------\n");
 }
 
-void clearInputBuffer() {
+void clearKeyboardBuffer() {
     int c;
     while ((c = getchar()) != '\n' && c != EOF);
 }
