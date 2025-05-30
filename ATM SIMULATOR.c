@@ -6,7 +6,7 @@
 #include <stdbool.h>
 
 #define MAX_USERS 100
-#define USER_DATA_FILE "user_data.dat"
+#define USER_DATA_FILE "customer_records.dat"  // Changed from user_data.dat
 #define ACCOUNT_NUM_LENGTH 16
 #define PIN_LENGTH 4
 #define INITIAL_USERS 5
