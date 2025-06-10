@@ -23,7 +23,7 @@ This ATM simulator provides a simple yet effective demonstration of everyday ban
 
 - Functions and header files
 - Conditional logic and loops
-- File I/O (optional)
-- `struct`s for user data (optional)
+- File I/O 
+- `struct`s for user data 
 - Modular program design
 
